@@ -22,9 +22,9 @@ public class InstituicaoRepository : IInstituicao
         var instituicaoBuscada = _context.Instituicaos.Find(id);
         if (instituicaoBuscada != null)
         {
-            instituicaoBuscada.NomeFantasia = instituicao.NomeFantasia;
-            instituicaoBuscada.Cnpj = instituicao.Cnpj;
-            instituicaoBuscada.Endereco = instituicao.Endereco;
+            instituicaoBuscada.Cnpj = String.IsNullOrWhiteSpace(instituicao.Cnpj)? instituicaoBuscada.Cnpj : instituicao.Cnpj;
+            instituicaoBuscada.NomeFantasia = String.IsNullOrWhiteSpace(instituicao.NomeFantasia)? instituicaoBuscada.NomeFantasia : instituicao.NomeFantasia;
+            instituicaoBuscada.Endereco = String.IsNullOrWhiteSpace(instituicao.Endereco) ? instituicaoBuscada.Endereco : instituicao.Endereco;
             _context.SaveChanges();
         }
     }

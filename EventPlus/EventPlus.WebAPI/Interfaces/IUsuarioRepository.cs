@@ -6,5 +6,5 @@ public interface IUsuarioRepository
 {
     void Cadastrar(Usuario usuario);
     Usuario BuscarPorId(Guid id);
-    Usuario BUscarPorEmailESenha(string email, string senha);
+    Usuario BuscarPorEmailESenha(string email, string senha);
 }

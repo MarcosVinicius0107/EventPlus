@@ -84,12 +84,16 @@ public class TipoEventoController : ControllerBase
     /// <param name="tipoEvento"> Tipo de evento com os dados atualizado</param>
     /// <returns>Status code 204 e o tipo de evento atualizado</returns>
     [HttpPut("{id}")]
-    public IActionResult Put(Guid id, TipoEvento tipoEvento)
+    public IActionResult Atualizar(Guid id, TipoEventoDTO tipoEvento)
     {
         try
         {
-            _tipoEventoRepository.Atualizar( id, tipoEvento );
-            return StatusCode(204, tipoEvento); //Retorna o status code 204 (No Content) indicando que a atualização foi bem-sucedida, mas não há conteúdo para retornar
+            var tipoEventoAtualizado = new TipoEvento
+            {
+                Titulo = tipoEvento.Titulo!
+            };
+            _tipoEventoRepository.Atualizar( id, tipoEventoAtualizado );
+            return StatusCode(204, tipoEventoAtualizado);
         }
         catch (Exception erro)
         {

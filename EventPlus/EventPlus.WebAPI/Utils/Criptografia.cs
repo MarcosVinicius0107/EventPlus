@@ -7,7 +7,7 @@ public static class Criptografia
         return BCrypt.Net.BCrypt.HashPassword(senha);
     }
     
-    public static bool VerificarHash(string senhaInformada, string senhaBanco)
+    public static bool CompararHash(string senhaInformada, string senhaBanco)
     {
         return BCrypt.Net.BCrypt.Verify(senhaInformada, senhaBanco);
     }
