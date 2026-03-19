@@ -62,4 +62,21 @@ public class UsuarioController : ControllerBase
             return BadRequest(error.Message);
         }
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    public IActionResult Listar()
+    {
+        try
+        {
+            return Ok(_usuarioRepository.Listar());
+        }
+        catch (Exception error)
+        {
+            return BadRequest(error.Message);
+        }
+    }
 }

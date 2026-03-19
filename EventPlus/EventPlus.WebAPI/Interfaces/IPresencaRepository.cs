@@ -10,4 +10,5 @@ public interface IPresencaRepository
     Presenca BuscarPorId(Guid id);
     void Atualizar(Guid id);
     List<Presenca> ListarMinhas(Guid IdUsuario);
+    void Atualizar(Guid id, Presenca presenca);
 }
