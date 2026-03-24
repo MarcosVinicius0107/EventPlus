@@ -34,6 +34,11 @@ public class ComentarioEventoRepository : IComentarioEventoRepository
         _context.SaveChanges();
     }
 
+    public object? ComentarioUsuarioEvento(Guid idUsuario, Guid idEvento)
+    {
+        throw new NotImplementedException();
+    }
+
     /// <summary>
     /// Método para deletar um comentário de evento específico com base no ID do comentário
     /// </summary>
@@ -56,6 +61,11 @@ public class ComentarioEventoRepository : IComentarioEventoRepository
     public List<ComentarioEvento> Listar(Guid IdEvento)
     {
         return _context.ComentarioEventos.OrderBy(comentarioEventoBuscado => comentarioEventoBuscado.Descricao).ToList();
+    }
+
+    public object? ListarComentariosPorEvento(Guid idEvento)
+    {
+        throw new NotImplementedException();
     }
 
     /// <summary>

@@ -1,3 +1,4 @@
+using Azure.AI.ContentSafety;
 using EventPlus.WebAPI.BdcontextEvent;
 using EventPlus.WebAPI.Interfaces;
 using EventPlus.WebAPI.Repositories;
@@ -6,6 +7,13 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var endpoint = "";
+var apiKey = "";
+
+var client = new ContentSafetyClient(new Uri(endpoint), new Azure.AzureKeyCredential(apiKey));
+
+builder.Services.AddSingleton(client);
 
 builder.Services.AddDbContext<EventContext>(opitions => opitions.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -20,6 +28,7 @@ builder.Services.AddScoped<ITipoUsuarioRepository, TipoUsuarioRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IEventoRepository, EventoRepository>();
 builder.Services.AddScoped<IPresencaRepository, PresencaRepository>();
+builder.Services.AddScoped<IComentarioEventoRepository, ComentarioEventoRepository>();
 
 //Adiciona o serviço de autenticação JWT Bearer(forma de autenticação)
 object value = builder.Services.AddAuthentication(options =>
